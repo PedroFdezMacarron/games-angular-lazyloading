@@ -1,0 +1,31 @@
+<div class="game">
+    <h1>Whack a mole!</h1>
+    <h2>Your score:</h2>
+    <h2 data-function="score">{{yourScore}}</h2>
+    <h2>Seconds left:</h2>
+    <h2 data-function="time-left">{{secondsLeft}}</h2>
+    <div class="row">
+        <div *ngFor="let rows of gameBoard; let i = index">
+        <div class="col">
+            <div *ngFor="let cols of gameBoard![i]; let j = index">
+            <div class="cell">            
+                <img
+                (click)="golpe(i, j)"
+                *ngIf="gameBoard![i][j].mole"
+                src="../../../assets/exercise-2/mole.png"
+                />
+                <img
+                src="../../../assets/exercise-2/bg.jpg"
+                *ngIf="!gameBoard![i][j].mole"
+                />            
+            </div>
+            </div>
+        </div>
+        </div>
+    </div> 
+</div>
+
+
+
+
+

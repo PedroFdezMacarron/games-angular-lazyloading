@@ -1,0 +1,44 @@
+
+<div class="win" *ngIf="scoreBoard.finish">
+    WIN!!!!<span></span>  {{scoreBoard.attempts}} ATTEMPTS
+</div>
+
+
+<div class="row">
+    <div class="score">
+        <label>Score:</label><span>{{scoreBoard.score}}</span>
+        <label>Attempts:</label><span>{{scoreBoard.attempts}}</span>
+    </div>
+    
+   <div *ngFor="let element of rows;let row=index">
+    <div class="col">
+
+        <div *ngFor="let element2 of cols;let col=index">
+            <!-- <img width="100px"  src="{{gameBoard![(row*4)+col].img}}"/>  -->
+            <!-- <p>{{(row*4)+col}}</p> -->
+            <div class="b-grid">
+            <img  *ngIf="gameBoard![(row*4)+col].fixed||gameBoard![(row*4)+col].selected"   class="b-grid img"  src="{{gameBoard![(row*4)+col].img}}"  name="{{gameBoard![(row*4)+col].name}}" />
+            <img  *ngIf="!(gameBoard![(row*4)+col].fixed||gameBoard![(row*4)+col].selected)"   (click)="jugar(gameBoard![(row*4)+col])"  class="b-grid img"  src="../../../assets/exercise-1/tick.svg"/>        
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!scoreBoard.finish">
+    <div class="score">
+        <label>Score:</label><span>{{scoreBoard.score}}</span>
+        <label>Attempts:</label><span>{{scoreBoard.attempts}}</span>
+    </div>
+
+    <div class="b-grid">
+        <div *ngFor="let card of gameBoard">
+            <img  *ngIf="card.fixed||card.selected"   class="b-grid img"  src="{{card.img}}"  name="{{card.name}}" />
+            <img  *ngIf="!(card.fixed||card.selected)"   (click)="jugar(card)"  class="b-grid img"  src="../../../assets/exercise-1/tick.svg"/>        
+            
+        </div>
+    </div>
+</div>
+

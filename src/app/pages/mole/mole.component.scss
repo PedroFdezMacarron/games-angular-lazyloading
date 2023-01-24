@@ -1,0 +1,29 @@
+.game{
+    display: flex;    
+    flex-direction: column;
+    margin: 0px auto;
+    align-items: center;
+}
+.win{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+}
+.col{
+    display: flex;    
+}
+.cell{    
+    border: 1px solid black;
+    font-size: 20px;
+    
+}
+img{
+width: 100px;
+    height: 100px;
+    object-fit: scale-down;
+}

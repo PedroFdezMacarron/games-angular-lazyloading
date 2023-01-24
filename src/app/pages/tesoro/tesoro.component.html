@@ -1,0 +1,37 @@
+<div class="game">
+   <div class="score">   
+        <P>JUGADAS:{{shots}}</P>
+   </div> 
+  <div class="row">
+    <div *ngFor="let rows of gameBoard; let i = index">
+      <div class="col">
+        <div *ngFor="let cols of gameBoard![i]; let j = index">
+          <div class="cell">
+            {{ gameBoard![i][j].x }},{{ gameBoard![i][j].y }}
+            <img
+              (click)="play(i, j)"
+              *ngIf="!gameBoard![i][j].clicked"
+              src="../../../assets/exercise-4/x.png"
+            />
+
+            <img
+              src="../../../assets/exercise-4/skull.png"
+              *ngIf="gameBoard![i][j].clicked && !gameBoard![i][j].treasure"
+            />
+
+            <img
+              src="../../../assets/exercise-4/chest.png"
+              *ngIf="gameBoard![i][j].clicked && gameBoard![i][j].treasure"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <div *ngIf="win" class="win">
+        <p>YOU WIN IN {{shots}} SHOTS</p>
+        <button (click)="init()">RESET</button>
+    </div>
+</div>
+
