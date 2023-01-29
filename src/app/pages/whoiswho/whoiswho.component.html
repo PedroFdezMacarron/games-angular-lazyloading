@@ -1,1 +1,40 @@
-<p>whoiswho works!</p>
+<h2 class="b-clues">Clues: <span data-function="clueCount">{{counter}}</span></h2>
+
+
+<!-- array de personas -->
+<div data-function="boardGame" class="b-board-game">
+
+    <div class="b-board-game img">
+        <ng-container>
+            <div *ngFor="let item of persons;index as i">        
+                <img *ngIf="item.show"  src={{item.img}} (click)="iKnow(i)" >
+                <img *ngIf="!item.show"  src={{item.img}} (click)="iKnow(i)" class="out">
+            </div> 
+        </ng-container>        
+    </div>
+
+    
+    
+
+<!-- array de preguntas -->
+<div data-function="questions" class="b-questions">
+    <ng-container>
+        <div *ngFor="let question of questionsType">                
+                <div class="b-clues">
+                    <h2>
+                        {{question.title}}
+                    </h2>
+                    <ng-container>
+                        <div *ngFor="let item of question.questions">
+                            <button class="questionsbutton" (click)="selectPista(question.key,item)">
+                                {{item}}
+                            </button>        
+                        </div> 
+                    </ng-container>                           
+                </div>                
+            </div>
+            </ng-container>           
+        
+</div>
+
+</div>
